@@ -1,6 +1,7 @@
 import simpy
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
 # 定義任務
 class Task:
@@ -23,7 +24,7 @@ class DistributedSystem:
         elif self.strategy == 'LLF':
             tasks.sort(key=lambda x: np.random.rand())  # 模擬LLF策略，隨機分配負載
         
-        for task in tasks:
+        for task in tqdm(tasks, desc="Scheduling tasks"):  # 使用tqdm顯示進度條
             node = self.select_node()
             self.env.process(self.execute_task(task, node))
 

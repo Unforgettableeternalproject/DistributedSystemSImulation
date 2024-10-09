@@ -14,7 +14,7 @@ if __name__ == "__main__":
         # 保存模擬結果到CSV檔案
         df = pd.DataFrame(logs, columns=['Task_ID', 'Duration', 'Start_Time', 'End_Time'])
         df['Completion_Time'] = df['End_Time'] - df['Start_Time']
-        df.to_csv(f'simulation_results_{strategy}.csv', index=False)
+        df.to_csv(f'Data/simulation_results_{strategy}.csv', index=False)
 
     # 數據分析的部分
     data = da.load_data(strategies)
