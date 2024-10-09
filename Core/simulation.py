@@ -25,11 +25,11 @@ class DistributedSystem:
     def schedule(self, tasks):
         # 根據策略進行調度
         if self.strategy == 'SJF':
-            tasks.sort(key=lambda x: x.duration)  # SJF策略：最短任務優先
+            tasks.sort(key=lambda x: x.duration)  
         elif self.strategy == 'LLF':
-            tasks.sort(key=lambda x: np.random.rand())  # 模擬LLF策略，隨機分配負載
+            tasks.sort(key=lambda x: np.random.rand()) 
         elif self.strategy == 'FCFS':
-            tasks.sort(key=lambda x: x.task_id)  # FCFS策略：按任務到達順序
+            tasks.sort(key=lambda x: x.task_id)  
         elif self.strategy == 'RR':
             tasks = self.round_robin_schedule(tasks)
         

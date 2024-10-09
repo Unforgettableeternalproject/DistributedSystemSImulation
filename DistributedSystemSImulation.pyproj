@@ -33,6 +33,7 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Data\" />
+    <Folder Include="Data\Graphs\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

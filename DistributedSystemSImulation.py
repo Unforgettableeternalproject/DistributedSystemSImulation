@@ -40,3 +40,5 @@ if __name__ == "__main__":
 
     data_strategies = da.load_data_for_strategies()
     da.analyze_data(data_strategies, 'strategies')
+
+    print("All experiments were successfully completed!")
