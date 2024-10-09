@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1bd66e77-a554-40e3-bfd9-ca348f122b63</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DistributedSystemSImulation.py</StartupFile>
+    <StartupFile>DistributedSystemSimulation.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,10 +24,11 @@
   <ItemGroup>
     <Compile Include="Core\data_analysis.py" />
     <Compile Include="Core\simulation.py" />
-    <Compile Include="DistributedSystemSImulation.py" />
+    <Compile Include="DistributedSystemSimulation.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
