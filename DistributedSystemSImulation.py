@@ -3,19 +3,40 @@ import Core.simulation as sim
 import Core.data_analysis as da
 import pandas as pd
 
-if __name__ == "__main__":
-    strategies = ['SJF', 'LLF']
-    num_tasks = 100  # 家览ヴ叭计秖
-    num_nodes = 5  # 竊翴计秖
+def experiment_systems():
+    strategy = 'SJF'
+    num_tasks = 5000  # 家览ヴ叭计秖
+    num_nodes = [1, 5, 20, 50, 100] # 竊翴计秖
+    
+    # 家览场だ
+    for nodes in num_nodes:
+        logs = sim.simulate(strategy, num_tasks, nodes)
+        # 玂家览挡狦CSV郎
+        df = pd.DataFrame(logs, columns=['Task_ID', 'Duration', 'Start_Time', 'End_Time', 'Memory_Usage'])
+        df['Completion_Time'] = df['End_Time'] - df['Start_Time']
+        df.to_csv(f'Data/simulation_results_node_{nodes}.csv', index=False)
+
+def experiment_strategies():
+    strategies = ['SJF', 'LLF', 'FCFS', 'RR']
+    num_tasks = 5000  # 家览ヴ叭计秖
+    num_nodes = 15  # 竊翴计秖
 
     # 家览场だ
     for strategy in strategies:
         logs = sim.simulate(strategy, num_tasks, num_nodes)
         # 玂家览挡狦CSV郎
-        df = pd.DataFrame(logs, columns=['Task_ID', 'Duration', 'Start_Time', 'End_Time'])
+        df = pd.DataFrame(logs, columns=['Task_ID', 'Duration', 'Start_Time', 'End_Time', 'Memory_Usage'])
         df['Completion_Time'] = df['End_Time'] - df['Start_Time']
-        df.to_csv(f'Data/simulation_results_{strategy}.csv', index=False)
+        df.to_csv(f'Data/simulation_results_strategy_{strategy}.csv', index=False)
+
+if __name__ == "__main__":
+    # 磅︽龟喷
+    experiment_systems()
+    experiment_strategies()
 
     # 计沮だ猂场だ
-    data = da.load_data(strategies)
-    da.analyze_data(data)
+    data_systems = da.load_data_for_systems()
+    da.analyze_data(data_systems, 'systems')
+
+    data_strategies = da.load_data_for_strategies()
+    da.analyze_data(data_strategies, 'strategies')
